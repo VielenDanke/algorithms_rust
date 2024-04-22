@@ -1,3 +1,4 @@
 pub mod determine_if_two_strings_are_close;
 pub mod minimum_length_of_string_after_deleting_similar_ends_1750;
 pub mod custom_sort_string_791;
+pub mod open_the_lock_752;

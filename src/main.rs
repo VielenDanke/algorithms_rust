@@ -8,5 +8,5 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    sort::medium::reveal_cards_in_increasing_order_950::Solution::deck_revealed_increasing_queue(vec![17,13,11,2,3,5,7]);
+    println!("{}", strings::medium::open_the_lock_752::Solution::open_lock(vec!["0201".to_string(), "0101".to_string(), "0102".to_string(), "1212".to_string(), "2002".to_string()], "0202".to_string()));
 }

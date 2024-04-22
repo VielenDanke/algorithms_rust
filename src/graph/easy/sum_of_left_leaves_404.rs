@@ -37,7 +37,7 @@ impl Solution {
                 let (node, is_left) = queue.pop_front().unwrap();
 
                 if let Some(v) = node {
-                    let c_node = v.try_borrow_mut()?;
+                    let mut c_node = v.try_borrow_mut()?;
                     if is_left && c_node.left.is_none() && c_node.right.is_none() {
                         total_sum += c_node.val;
                     }

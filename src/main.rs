@@ -8,5 +8,5 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    println!("{}", strings::medium::open_the_lock_752::Solution::open_lock(vec!["0201".to_string(), "0101".to_string(), "0102".to_string(), "1212".to_string(), "2002".to_string()], "0202".to_string()));
+    println!("{:?}", graph::medium::minimum_height_trees_310::Solution::find_min_height_trees_bfs(1, vec![]));
 }

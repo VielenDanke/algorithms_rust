@@ -8,9 +8,9 @@ impl Solution {
         let should_remain = 2;
 
         if n < should_remain {
-            return (0..n).collect::<Vec<i32>>();
+            return (0..n).collect();
         }
-        let mut graph = Solution::create_graph(edges);
+        let mut graph = create_graph(edges);
         let mut leaves = graph
             .iter()
             .filter_map(|(i, set)| if set.len() == 1 { Some(*i) } else { None })
@@ -67,7 +67,7 @@ impl Solution {
         if edges.is_empty() {
             return Vec::new();
         }
-        let graph = Solution::create_graph(edges);
+        let graph = create_graph(edges);
         let mut min = 1 << 30;
         let mut result = Vec::new();
         for root in 0..n {
@@ -99,7 +99,7 @@ impl Solution {
             let increased_max = current_max + 1;
             increased_max
         }
-        let graph = Solution::create_graph(edges);
+        let graph = create_graph(edges);
         let mut min = 1 << 30;
         let mut result = Vec::new();
         for root in 0..n {
@@ -115,14 +115,14 @@ impl Solution {
         }
         result
     }
+}
 
-    fn create_graph(edges: Vec<Vec<i32>>) -> HashMap<i32, HashSet<i32>> {
-        let mut graph = HashMap::new();
+fn create_graph(edges: Vec<Vec<i32>>) -> HashMap<i32, HashSet<i32>> {
+    let mut graph = HashMap::new();
 
-        for edge in edges {
-            graph.entry(edge[0]).or_insert(HashSet::new()).insert(edge[1]);
-            graph.entry(edge[1]).or_insert(HashSet::new()).insert(edge[0]);
-        }
-        graph
+    for edge in edges {
+        graph.entry(edge[0]).or_insert(HashSet::new()).insert(edge[1]);
+        graph.entry(edge[1]).or_insert(HashSet::new()).insert(edge[0]);
     }
+    graph
 }

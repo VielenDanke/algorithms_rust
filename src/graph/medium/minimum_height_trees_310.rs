@@ -53,7 +53,7 @@ impl Solution {
                 for _ in 0..queue.len() {
                     let elem = queue.pop_front().unwrap();
 
-                    for node in graph.get(&elem).unwrap_or(&Vec::new()).iter() {
+                    for node in graph.get(&elem).unwrap_or(&HashSet::new()).iter() {
                         if !visited[*node as usize] {
                             visited[*node as usize] = true;
                             queue.push_back(*node);

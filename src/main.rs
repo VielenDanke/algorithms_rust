@@ -8,5 +8,5 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    println!("{:?}", graph::medium::minimum_height_trees_310::Solution::find_min_height_trees_bfs(1, vec![]));
+    println!("{:?}", dynamic_programming::medium::longest_ideal_subsequence_2370::Solution::longest_ideal_string(String::from("abcd"), 3));
 }

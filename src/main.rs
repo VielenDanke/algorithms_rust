@@ -8,5 +8,5 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    println!("{:?}", dynamic_programming::medium::longest_ideal_subsequence_2370::Solution::longest_ideal_string(String::from("abcd"), 3));
+    println!("{:?}", dynamic_programming::hard::minimum_falling_path_sum_2_1289::Solution::min_falling_path_sum(vec![vec![7]]));
 }

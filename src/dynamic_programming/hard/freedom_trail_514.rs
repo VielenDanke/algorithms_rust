@@ -9,7 +9,7 @@ impl Solution {
         steps_between.min(steps_around) as i32
     }
 
-    fn try_lock(cache: &mut Vec<Vec<i32>>, ring_index: usize, key_index: usize, ring: &[u8], key: &[u8]) -> i32 {
+    fn rotate_dial(cache: &mut Vec<Vec<i32>>, ring_index: usize, key_index: usize, ring: &[u8], key: &[u8]) -> i32 {
         if cache[ring_index][key_index] < 1 << 30 {
             return cache[ring_index][key_index];
         }
@@ -21,7 +21,7 @@ impl Solution {
             if ring[i] == key[key_index] {
                 let total_steps = Solution::count_steps(ring_index, i, ring.len()) +
                     1 +
-                    Solution::try_lock(cache, i, key_index + 1, ring, key);
+                    Solution::rotate_dial(cache, i, key_index + 1, ring, key);
                 min_steps = min_steps.min(total_steps);
                 cache[ring_index][key_index] = min_steps;
             }
@@ -31,7 +31,7 @@ impl Solution {
 
     pub fn find_rotate_steps_top_down(ring: String, key: String) -> i32 {
         let mut cache = vec![vec![1 << 30; key.len() + 1]; ring.len() + 1];
-        Solution::try_lock(&mut cache, 0, 0, ring.as_bytes(), key.as_bytes())
+        Solution::rotate_dial(&mut cache, 0, 0, ring.as_bytes(), key.as_bytes())
     }
 
     pub fn find_rotate_steps(ring: String, key: String) -> i32 {

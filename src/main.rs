@@ -8,5 +8,4 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    println!("{:?}", dynamic_programming::hard::minimum_falling_path_sum_2_1289::Solution::min_falling_path_sum(vec![vec![7]]));
 }

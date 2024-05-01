@@ -5,3 +5,4 @@ pub mod length_of_last_word_58;
 pub mod isomorphic_strings_205;
 pub mod maximum_nesting_depth_of_the_parentheses_1614;
 pub mod make_the_string_great_1544;
+pub mod reverse_prefix_of_word_2000;

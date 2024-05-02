@@ -6,3 +6,4 @@ pub mod isomorphic_strings_205;
 pub mod maximum_nesting_depth_of_the_parentheses_1614;
 pub mod make_the_string_great_1544;
 pub mod reverse_prefix_of_word_2000;
+pub mod largest_positive_integer_that_exists_with_its_negative_2441;

@@ -4,10 +4,7 @@ struct Solution;
 
 impl Solution {
     pub fn find_max_k(nums: Vec<i32>) -> i32 {
-        let mut storage = HashSet::new();
-        for v in &nums {
-            storage.insert(v);
-        }
+        let mut storage: HashSet<i32> = HashSet::from_iter(nums.clone());
         let mut result = None;
         for v in &nums {
             if *v > 0 && storage.contains(&(*v * -1)) {

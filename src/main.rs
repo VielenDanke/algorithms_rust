@@ -8,4 +8,6 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
+    let i = strings::medium::compare_version_numbers_165::Solution::compare_version("1.01".to_string(), "1.001".to_string());
+    println!("{i}");
 }

@@ -8,6 +8,8 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    let i = strings::medium::compare_version_numbers_165::Solution::compare_version("1.01".to_string(), "1.001".to_string());
-    println!("{i}");
+    let result = sort::medium::boats_to_save_people_881::Solution::num_rescue_boats(
+        vec![2, 49, 10, 7, 11, 41, 47, 2, 22, 6, 13, 12, 33, 18, 10, 26, 2, 6, 50, 10], 50,
+    );
+    println!("{result:?}");
 }

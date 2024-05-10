@@ -9,10 +9,7 @@ impl Solution {
         while k > 0 && arr.len() > 1 {
             let denominator = arr.pop().unwrap();
             for numerator in arr.iter().copied().take(k) {
-                heap.push(Fraction {
-                    numerator,
-                    denominator,
-                });
+                heap.push(Fraction::build(numerator, denominator));
                 if heap.len() == heap.capacity() {
                     heap.pop();
                 }
@@ -32,6 +29,12 @@ struct Fraction {
 impl Fraction {
     fn into_vec(self) -> Vec<i32> {
         vec![self.numerator, self.denominator]
+    }
+
+    fn build(numerator: i32, denominator: i32) -> Fraction {
+        Fraction {
+            numerator, denominator
+        }
     }
 }
 

@@ -7,3 +7,4 @@ pub mod number_of_students_unable_to_eat_lunch_1700;
 pub mod time_needed_to_buy_tickets_2073;
 pub mod island_perimeter_463;
 pub mod relative_ranks_506;
+pub mod largest_local_values_in_a_matrix_2373;

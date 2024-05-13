@@ -11,3 +11,4 @@ pub mod find_all_groups_of_farmland_1992;
 pub mod minimum_number_of_operations_to_make_array_xor_equal_to_k_2997;
 pub mod maximize_happiness_of_selected_children_3075;
 pub mod k_th_smallest_prime_fraction_786;
+pub mod score_after_flipping_matrix_861;

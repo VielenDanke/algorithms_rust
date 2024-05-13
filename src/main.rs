@@ -8,8 +8,6 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    let result = sort::medium::boats_to_save_people_881::Solution::num_rescue_boats(
-        vec![2, 49, 10, 7, 11, 41, 47, 2, 22, 6, 13, 12, 33, 18, 10, 26, 2, 6, 50, 10], 50,
-    );
-    println!("{result:?}");
+    let result = array::medium::score_after_flipping_matrix_861::Solution::matrix_score(vec![vec![0, 0, 1, 1], vec![1, 0, 1, 0], vec![1, 1, 0, 0]]);
+    println!("{}", result);
 }

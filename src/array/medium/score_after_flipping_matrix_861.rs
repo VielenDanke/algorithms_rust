@@ -14,7 +14,7 @@ impl Solution {
         score
     }
 
-    pub fn matrix_score_brute_force(grid: Vec<Vec<i32>>) -> i32 {
+    pub fn matrix_score_brute_force(mut grid: Vec<Vec<i32>>) -> i32 {
         let (rows, cols) = (grid.len(), grid[0].len());
 
         for i in 0..rows {

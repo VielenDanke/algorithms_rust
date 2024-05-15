@@ -8,6 +8,6 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    let result = array::medium::path_with_maximum_gold_1219::Solution::get_maximum_gold(vec![vec![0, 6, 0], vec![5, 8, 7], vec![0, 9, 0]]);
+    let result = backtracking::medium::find_the_safest_path_in_a_grid_2812::Solution::maximum_safeness_factor(vec![vec![1, 0, 0], vec![0, 0, 0], vec![0, 0, 1]]);
     println!("{}", result);
 }

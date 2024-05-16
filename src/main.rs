@@ -8,6 +8,6 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    let result = backtracking::medium::find_the_safest_path_in_a_grid_2812::Solution::maximum_safeness_factor(vec![vec![1, 0, 0], vec![0, 0, 0], vec![0, 0, 1]]);
+    let result = graph::medium::path_with_minimum_effort_1631::Solution::minimum_effort_path(vec![vec![1,2,2],vec![3,8,2],vec![5,3,5]]);
     println!("{}", result);
 }

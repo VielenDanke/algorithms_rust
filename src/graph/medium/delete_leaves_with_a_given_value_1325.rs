@@ -25,14 +25,16 @@ pub struct Solution;
 impl Solution {
     pub fn remove_leaf_nodes(root: Option<Rc<RefCell<TreeNode>>>, target: i32) -> Option<Rc<RefCell<TreeNode>>> {
         root.as_ref().and_then(|node| {
-            let mut node_ref = node.borrow_mut();
-            node_ref.left = Self::remove_leaf_nodes(node_ref.left.take(), target);
-            node_ref.right = Self::remove_leaf_nodes(node_ref.right.take(), target);
-            if node_ref.left.is_none() && node_ref.right.is_none() && node_ref.val == target {
-                None
-            } else {
-                Some(node.clone())
+            if let Ok(mut node_ref) = node.try_borrow_mut() {
+                node_ref.left = Self::remove_leaf_nodes(node_ref.left.take(), target);
+                node_ref.right = Self::remove_leaf_nodes(node_ref.right.take(), target);
+                return if node_ref.left.is_none() && node_ref.right.is_none() && node_ref.val == target {
+                    None
+                } else {
+                    Some(node.clone())
+                }
             }
+            None
         })
     }
 

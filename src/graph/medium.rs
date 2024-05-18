@@ -4,3 +4,4 @@ pub mod smallest_string_starting_from_leaf_988;
 pub mod minimum_height_trees_310;
 pub mod path_with_minimum_effort_1631;
 pub mod delete_leaves_with_a_given_value_1325;
+pub mod distribute_coins_in_binary_tree_979;

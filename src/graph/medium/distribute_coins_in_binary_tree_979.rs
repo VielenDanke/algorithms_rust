@@ -5,7 +5,7 @@ use std::cell::RefCell;
 pub struct Solution;
 
 impl Solution {
-    pub fn distribute_coins(mut root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+    pub fn distribute_coins(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         fn dfs(node: Option<Rc<RefCell<TreeNode>>>, moves: &mut i32) -> i32 {
             return if let Some(node) = node.as_ref() {
                 if let Ok(mut node) = node.try_borrow_mut() {

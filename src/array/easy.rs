@@ -8,3 +8,4 @@ pub mod time_needed_to_buy_tickets_2073;
 pub mod island_perimeter_463;
 pub mod relative_ranks_506;
 pub mod largest_local_values_in_a_matrix_2373;
+pub mod sum_of_all_subset_xor_totals_1863;

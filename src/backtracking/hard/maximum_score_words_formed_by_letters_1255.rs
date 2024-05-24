@@ -3,7 +3,7 @@ use std::collections::HashMap;
 pub struct Solution;
 
 impl Solution {
-    pub fn max_score_words(mut words: Vec<String>, letters: Vec<char>, score: Vec<i32>) -> i32 {
+    pub fn max_score_words(words: Vec<String>, letters: Vec<char>, score: Vec<i32>) -> i32 {
         let mut score_by_word = HashMap::new();
 
         let mut letters_map = HashMap::new();
@@ -11,7 +11,6 @@ impl Solution {
         for letter in &letters {
             *letters_map.entry(letter.clone()).or_insert(0) += 1;
         }
-
         for word in &words {
             let mut current_score = 0;
             let mut is_valid = true;
@@ -29,8 +28,6 @@ impl Solution {
                 score_by_word.insert(word.clone(), -1);
             }
         }
-        words.sort_unstable_by(|left, right| score_by_word.get(right).unwrap().cmp(score_by_word.get(left).unwrap()));
-
         let mut max = 0;
 
         Self::backtrack(&words, &mut letters_map, &score_by_word, &mut max, 0, 0);

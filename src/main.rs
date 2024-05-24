@@ -8,6 +8,10 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    let result = graph::medium::path_with_minimum_effort_1631::Solution::minimum_effort_path(vec![vec![1,2,2],vec![3,8,2],vec![5,3,5]]);
+    let mut result = backtracking::hard::maximum_score_words_formed_by_letters_1255::Solution::max_score_words(
+        vec!["dog".to_string(), "cat".to_string(), "dad".to_string(), "good".to_string()],
+        vec!['a', 'a', 'c', 'd', 'd', 'd', 'g', 'o', 'o'],
+        vec![1, 0, 9, 5, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    );
     println!("{}", result);
 }

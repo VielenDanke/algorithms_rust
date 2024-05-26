@@ -8,6 +8,6 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    let result = backtracking::hard::word_break_2_140::Solution::word_break("catsanddog".to_string(), vec!["cat".to_string(), "cats".to_string(), "and".to_string(), "sand".to_string(), "dog".to_string()]);
-    println!("{:?}", result);
+    let result = backtracking::hard::check_record_552::Solution::check_record(10101);
+    println!("{}", result);
 }

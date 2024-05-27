@@ -8,6 +8,6 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    let result = backtracking::hard::check_record_552::Solution::check_record(10101);
+    let result = array::easy::special_array_with_x_elements_greater_than_or_equal_x_1608::Solution::special_array(vec![0,4,3,0,4]);
     println!("{}", result);
 }

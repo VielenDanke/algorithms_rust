@@ -32,7 +32,7 @@ impl Solution {
 
     pub fn check_record_backtracking_memo(n: i32) -> i32 {
         let mut cache = vec![vec![vec![-1i64; 5]; 5]; 100005];
-        return (Self::form_possible_attendance(&mut cache, n, 0, 0, &vec!['A', 'L', 'P']) % BIG_MOD) as i32;
+        return (Self::form_possible_attendance(&mut cache, n, 0, 0, &vec!['A', 'L', 'P']) % (BIG_MOD as i64)) as i32;
     }
 
     fn form_possible_attendance(cache: &mut Vec<Vec<Vec<i64>>>, n: i32, absence: i32, consecutive: i32, ch_arr: &Vec<char>) -> i64 {
@@ -53,7 +53,7 @@ impl Solution {
                 continue;
             }
             result += Self::form_possible_attendance(cache, n - 1, new_absence, new_consecutive, ch_arr);
-            result %= BIG_MOD;
+            result %= BIG_MOD as i64;
         }
         cache[n as usize][absence as usize][consecutive as usize] = result;
         result

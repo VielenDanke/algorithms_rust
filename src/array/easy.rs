@@ -9,3 +9,4 @@ pub mod island_perimeter_463;
 pub mod relative_ranks_506;
 pub mod largest_local_values_in_a_matrix_2373;
 pub mod sum_of_all_subset_xor_totals_1863;
+pub mod special_array_with_x_elements_greater_than_or_equal_x_1608;

@@ -5,3 +5,4 @@ pub mod open_the_lock_752;
 pub mod number_of_wonderful_substrings_1915;
 pub mod compare_version_numbers_165;
 pub mod palindrome_partitioning_131;
+pub mod get_equal_substrings_within_budget_1208;

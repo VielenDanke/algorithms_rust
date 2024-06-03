@@ -8,6 +8,6 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    let result = array::easy::special_array_with_x_elements_greater_than_or_equal_x_1608::Solution::special_array(vec![0,4,3,0,4]);
+    let result = strings::medium::append_characters_to_string_to_make_subsequence_2486::Solution::append_characters("coaching".to_string(), "coding".to_string());
     println!("{}", result);
 }

@@ -7,3 +7,4 @@ pub mod compare_version_numbers_165;
 pub mod palindrome_partitioning_131;
 pub mod get_equal_substrings_within_budget_1208;
 pub mod append_characters_to_string_to_make_subsequence_2486;
+pub mod find_common_characters_1002;

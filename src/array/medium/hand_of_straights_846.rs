@@ -49,7 +49,7 @@ impl Solution {
             *map.entry(card).or_insert(0) += 1;
         }
 
-        while heap.len() > 0 {
+        while !heap.is_empty() {
             smallest = -heap.pop().unwrap();
             occurance = *map.get(&smallest).unwrap();
             if occurance > 0 {

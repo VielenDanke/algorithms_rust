@@ -14,3 +14,4 @@ pub mod k_th_smallest_prime_fraction_786;
 pub mod score_after_flipping_matrix_861;
 pub mod count_triplets_that_can_form_two_arrays_of_equal_xor_1442;
 pub mod single_number_3_260;
+pub mod hand_of_straights_846;

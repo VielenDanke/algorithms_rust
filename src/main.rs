@@ -8,6 +8,6 @@ pub mod backtracking;
 pub mod stack;
 
 fn main() {
-    let result = strings::medium::append_characters_to_string_to_make_subsequence_2486::Solution::append_characters("coaching".to_string(), "coding".to_string());
+    let result = array::medium::hand_of_straights_846::Solution::is_n_straight_hand(vec![1,2,3,6,2,3,4,7,8], 3);
     println!("{}", result);
 }

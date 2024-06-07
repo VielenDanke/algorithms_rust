@@ -6,16 +6,17 @@ impl Solution {
 
         sentence
             .split(" ")
-            .map(|s| String::from(s))
-            .map(|s| {
-                for dictionary_word in dictionary.iter() {
-                    if s.starts_with(dictionary_word) {
-                        return dictionary_word.clone();
-                    }
-                }
-                s
-            })
+            .map(|s| Self::replace_with_word_if_needed(String::from(s), &dictionary))
             .collect::<Vec<String>>()
             .join(" ")
+    }
+
+    fn replace_with_word_if_needed(word: String, dictionary: &Vec<String>) -> String {
+        for dictionary_word in dictionary.iter() {
+            if word.starts_with(dictionary_word) {
+                return dictionary_word.clone();
+            }
+        }
+        word
     }
 }

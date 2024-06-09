@@ -16,3 +16,4 @@ pub mod count_triplets_that_can_form_two_arrays_of_equal_xor_1442;
 pub mod single_number_3_260;
 pub mod hand_of_straights_846;
 pub mod continuous_subarray_sum_523;
+pub mod subarray_sums_divisible_by_k_974;

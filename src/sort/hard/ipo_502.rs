@@ -14,6 +14,7 @@ impl Solution {
 
         let mut i = 0;
 
+        // we only can make `k` projects
         for _ in 0..k {
             // add profits while we are able to with capital `w`
             while i < n && capital[capital_positions[i]] <= w {

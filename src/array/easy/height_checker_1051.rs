@@ -21,14 +21,15 @@ impl Solution {
     pub fn height_checker_b_tree(heights: Vec<i32>) -> i32 {
         let mut b_tree_map = BTreeMap::new();
 
-        for height in heights {
+        for &height in heights.iter() {
             *b_tree_map.entry(height).or_insert(0) += 1;
         }
 
         let mut idx = 0;
         let mut counter = 0;
+        let n = heights.len();
 
-        while idx < heights.len() {
+        while idx < n {
             if let Some((key, mut value)) = b_tree_map.pop_first() {
                 while value > 0 {
                     if key != heights[idx] {

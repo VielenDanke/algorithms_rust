@@ -9,6 +9,6 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let result = array::medium::hand_of_straights_846::Solution::is_n_straight_hand(vec![1,2,3,6,2,3,4,7,8], 3);
+    let result = sort::medium::minimum_number_of_days_to_make_m_bouquets_1482::Solution::min_days(vec![1, 10, 3, 10, 2], 3, 1);
     println!("{}", result);
 }

@@ -1,7 +1,6 @@
 pub struct Solution;
 
 impl Solution {
-
     pub fn min_days(mut bloom_day: Vec<i32>, m: i32, k: i32) -> i32 {
         // m buckets
         // k adjacent flowers
@@ -37,7 +36,7 @@ impl Solution {
                 count = 0;
             }
 
-            if  count == k {
+            if count == k {
                 num_of_bouquets += 1;
                 count = 0;
             }

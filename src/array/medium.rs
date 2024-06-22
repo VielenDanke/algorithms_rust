@@ -18,3 +18,4 @@ pub mod hand_of_straights_846;
 pub mod continuous_subarray_sum_523;
 pub mod subarray_sums_divisible_by_k_974;
 pub mod minimum_increment_to_make_array_unique_945;
+pub mod count_number_of_nice_subarrays_1248;

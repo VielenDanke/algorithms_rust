@@ -9,6 +9,6 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let result = sort::medium::minimum_number_of_days_to_make_m_bouquets_1482::Solution::min_days(vec![1, 10, 3, 10, 2], 3, 1);
+    let result = array::medium::longest_continuous_subarray_with_absolute_diff_less_than_or_equal_to_limit_1438::Solution::longest_subarray(vec![1,5,6,7,8,10,6,5,6], 4);
     println!("{}", result);
 }

@@ -6,3 +6,4 @@ pub mod path_with_minimum_effort_1631;
 pub mod delete_leaves_with_a_given_value_1325;
 pub mod distribute_coins_in_binary_tree_979;
 pub mod binary_search_tree_to_greater_sum_tree_1038;
+pub mod balance_binary_search_tree_1382;

@@ -7,3 +7,4 @@ pub mod delete_leaves_with_a_given_value_1325;
 pub mod distribute_coins_in_binary_tree_979;
 pub mod binary_search_tree_to_greater_sum_tree_1038;
 pub mod balance_binary_search_tree_1382;
+pub mod maximum_total_importance_of_roads_2285;

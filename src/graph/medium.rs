@@ -8,3 +8,4 @@ pub mod distribute_coins_in_binary_tree_979;
 pub mod binary_search_tree_to_greater_sum_tree_1038;
 pub mod balance_binary_search_tree_1382;
 pub mod maximum_total_importance_of_roads_2285;
+pub mod all_ancestors_of_node_in_directec_acyclic_graph_2192;

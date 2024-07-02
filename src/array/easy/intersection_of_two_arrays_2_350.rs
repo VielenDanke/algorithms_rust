@@ -4,29 +4,31 @@ impl Solution {
     pub fn intersect(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
         let m = 1001;
 
-        let mut nums_1_counter = vec![0; m];
-        let mut nums_2_counter = vec![0; m];
+        let mut nums_1_counter = nums1.iter().fold(vec![0; m], |mut arr, &num| {
+            arr[num as usize] += 1;
+            arr
+        });
 
-        for &num in nums1.iter() {
-            nums_1_counter[num as usize] += 1;
-        }
+        let nums_2_counter = nums2.iter().fold(vec![0; m], |mut arr, &num| {
+            arr[num as usize] += 1;
+            arr
+        });
 
-        for &num in nums2.iter() {
-            nums_2_counter[num as usize] += 1;
-        }
-
-        let mut result = Vec::new();
-
-        for i in 0..m {
-            let num_to_push = i as i32;
-            if nums_1_counter[i] > 0 && nums_2_counter[i] > 0 {
-                let min_number_to_push = nums_1_counter[i].min(nums_2_counter[i]) as usize;
-                for _ in 0..min_number_to_push {
-                    result.push(num_to_push);
+        nums_1_counter
+            .iter()
+            .zip(nums_2_counter)
+            .enumerate()
+            .flat_map(|(idx, zipped)| {
+                let mut temp = Vec::new();
+                if *zipped.0 > 0 && zipped.1 > 0 {
+                    let min_number_to_push = *zipped.0.min(&zipped.1) as usize;
+                    for _ in 0..min_number_to_push {
+                        temp.push(idx);
+                    }
                 }
-            }
-        }
-
-        result
+                temp
+            })
+            .map(|v| v as i32)
+            .collect::<Vec<i32>>()
     }
 }

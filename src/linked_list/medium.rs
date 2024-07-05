@@ -3,3 +3,4 @@ pub mod remove_nth_node_from_end_of_list_19;
 pub mod remove_zero_sum_consecutive_nodes_from_linked_list_1171;
 pub mod remove_nodes_from_linked_list_2487;
 pub mod double_a_number_represented_as_a_linked_list_2816;
+pub mod find_the_min_and_max_number_of_nodes_between_critical_points_2058;

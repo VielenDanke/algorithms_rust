@@ -1,3 +1,4 @@
 pub mod minimum_remove_to_make_valid_parentheses_1249;
 pub mod valid_parenthesis_string_678;
 pub mod remove_k_digits_402;
+pub mod reverse_substrings_between_each_pair_of_parentheses_1190;

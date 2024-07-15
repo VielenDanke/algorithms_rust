@@ -9,3 +9,4 @@ pub mod binary_search_tree_to_greater_sum_tree_1038;
 pub mod balance_binary_search_tree_1382;
 pub mod maximum_total_importance_of_roads_2285;
 pub mod all_ancestors_of_node_in_directec_acyclic_graph_2192;
+pub mod create_binary_tree_from_descriptions_2196;

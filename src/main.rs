@@ -9,7 +9,5 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let result = stack::medium::reverse_substrings_between_each_pair_of_parentheses_1190::Solution::reverse_parentheses("(ed(et(oc))el)".to_string());
-
-    println!("{result}");
+    graph::medium::create_binary_tree_from_descriptions_2196::Solution::create_binary_tree(vec![vec![20,15,1],vec![20,17,0],vec![50,20,1],vec![50,80,0],vec![80,19,1]]);
 }

@@ -29,8 +29,10 @@ impl Solution {
         dfs(&root.as_ref().unwrap().borrow(), &mut end_arr, dest_value);
 
         let prf_len = start_arr.iter().zip(&end_arr).take_while(|(a, b)| a == b).count();
-        let mut ans: String = std::iter::repeat('U').take(start_arr.len() - prf_len).collect();
-        ans.push_str(std::str::from_utf8(&end_arr[prf_len..]).unwrap());
-        ans
+
+        let push_up = "U".repeat(start_arr.len() - prf_len);
+        let push_bottom = String::from_utf8_lossy(&end_arr[prf_len..]).to_string();
+
+        format!("{push_up}{push_bottom}")
     }
 }

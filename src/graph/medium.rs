@@ -12,3 +12,4 @@ pub mod all_ancestors_of_node_in_directec_acyclic_graph_2192;
 pub mod create_binary_tree_from_descriptions_2196;
 pub mod step_by_step_directions_from_binary_tree_node_to_another_2096;
 pub mod delete_nodes_and_return_forest_1110;
+pub mod number_of_good_leaf_nodes_pairs_1530;

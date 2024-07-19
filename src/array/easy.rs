@@ -15,3 +15,4 @@ pub mod relative_sort_array_1122;
 pub mod intersection_of_two_arrays_2_350;
 pub mod pass_the_pillow_2582;
 pub mod crawler_log_folder_1598;
+pub mod lucky_numbers_in_matrix_1380;

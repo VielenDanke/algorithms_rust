@@ -13,7 +13,7 @@ impl Solution {
             for (ch, c) in [&root.left, &root.right].iter().zip([b'L', b'R']) {
                 if let Some(ch) = ch {
                     arr.push(c);
-                    if Self::dfs(&ch.borrow(), arr, target) {
+                    if dfs(&ch.borrow(), arr, target) {
                         return true;
                     }
                     arr.pop();

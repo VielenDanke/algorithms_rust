@@ -7,7 +7,8 @@ pub struct Solution;
 impl Solution {
     pub fn count_pairs(root: Option<Rc<RefCell<TreeNode>>>, distance: i32) -> i32 {
         fn dfs(root: Option<Rc<RefCell<TreeNode>>>, distance: i32, result: &mut i32) -> Vec<i32> {
-            let mut n = root.unwrap().borrow_mut();
+            let unwrapped_node = root.unwrap();
+            let mut n = unwrapped_node.borrow_mut();
 
             if n.left.is_none() && n.right.is_none() {
                 return vec![1];

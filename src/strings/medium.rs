@@ -9,3 +9,4 @@ pub mod get_equal_substrings_within_budget_1208;
 pub mod append_characters_to_string_to_make_subsequence_2486;
 pub mod find_common_characters_1002;
 pub mod replace_words_648;
+pub mod minimum_cost_to_convert_string_2976;

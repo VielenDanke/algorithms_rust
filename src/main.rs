@@ -9,9 +9,13 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let result = graph::medium::find_the_city_with_the_smallest_number_of_neighbors_at_threshold_distance_1334::Solution::find_the_city(
-        5, vec![vec![0,1,2],vec![0,4,8],vec![1,2,3],vec![1,4,2],vec![2,3,1],vec![3,4,1]], 2,
+    let result = strings::medium::minimum_cost_to_convert_string_2976::Solution::minimum_cost(
+        "abcd".to_string(),
+        "acbe".to_string(),
+        vec!['a','b','c','c','e','d'],
+        vec!['b','c','b','e','b','e'],
+        vec![2,5,5,1,2,20],
     );
 
-    println!("{}", result);
+    print!("{}", result);
 }

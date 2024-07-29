@@ -22,3 +22,4 @@ pub mod count_number_of_nice_subarrays_1248;
 pub mod longest_continuous_subarray_with_absolute_diff_less_than_or_equal_to_limit_1438;
 pub mod minimum_difference_between_largest_and_smallest_value_in_three_moves_1509;
 pub mod find_the_winner_of_the_circular_game_1823;
+pub mod count_number_of_teams_1395;

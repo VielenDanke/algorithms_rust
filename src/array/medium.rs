@@ -24,3 +24,4 @@ pub mod minimum_difference_between_largest_and_smallest_value_in_three_moves_150
 pub mod find_the_winner_of_the_circular_game_1823;
 pub mod count_number_of_teams_1395;
 pub mod filling_bookcase_shelves_1105;
+pub mod range_sum_of_sorted_subarray_sums_1508;

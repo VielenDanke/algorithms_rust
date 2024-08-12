@@ -9,7 +9,4 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let result = array::medium::count_number_of_teams_1395::Solution::num_teams(vec![2,5,3,4,1]);
-
-    print!("{}", result);
 }

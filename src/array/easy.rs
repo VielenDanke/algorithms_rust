@@ -17,3 +17,4 @@ pub mod pass_the_pillow_2582;
 pub mod crawler_log_folder_1598;
 pub mod lucky_numbers_in_matrix_1380;
 pub mod make_two_arrays_equal_by_reversing_subarrays_1460;
+pub mod task_703;

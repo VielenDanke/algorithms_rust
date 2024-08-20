@@ -29,3 +29,4 @@ pub mod task_40;
 pub mod task_624;
 mod task_264;
 mod task_1140;
+mod task_1937;

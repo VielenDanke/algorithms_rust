@@ -41,32 +41,31 @@ pub struct Solution;
 
 impl Solution {
     pub fn is_sub_path(mut head: Option<Box<ListNode>>, root: Option<Rc<RefCell<TreeNode>>>) -> bool {
-        let mut res = false;
         let mut head_vec = vec![];
         while let Some(node) = head {
             head_vec.push(node.val);
             head = node.next;
         }
-        Self::dfs(root.as_ref(), &head_vec, &mut vec![], &mut res);
-        res
+        Self::dfs(root.as_ref(), &head_vec, &mut vec![])
     }
 
-    pub fn dfs(root: Option<&Rc<RefCell<TreeNode>>>, head: &Vec<i32>, mut tmp: &mut Vec<i32>, res: &mut bool) {
-        if *res {
-            return;
-        }
+    pub fn dfs(root: Option<&Rc<RefCell<TreeNode>>>, head: &Vec<i32>, mut tmp: &mut Vec<i32>) -> bool {
         if let Some(node) = root {
             if let Ok(node) = node.try_borrow() {
                 tmp.push(node.val);
                 if tmp.windows(head.len()).any(|window| window == head) {
-                    *res = true;
-                    return;
+                    return true;
                 }
-                Self::dfs(node.right.as_ref(), head, tmp, res);
-                Self::dfs(node.left.as_ref(), head, tmp, res);
+                if Self::dfs(node.right.as_ref(), head, tmp) {
+                    return true;
+                }
+                if Self::dfs(node.left.as_ref(), head, tmp) {
+                    return true;
+                }
                 tmp.remove(tmp.len() - 1);
             }
         }
+        false
     }
 
     pub fn is_sub_path_tle(head: Option<Box<ListNode>>, root: Option<Rc<RefCell<TreeNode>>>) -> bool {

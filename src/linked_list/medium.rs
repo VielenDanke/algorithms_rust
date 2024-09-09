@@ -6,3 +6,4 @@ pub mod double_a_number_represented_as_a_linked_list_2816;
 pub mod find_the_min_and_max_number_of_nodes_between_critical_points_2058;
 mod task_3217;
 mod task_1367;
+mod task_2326;

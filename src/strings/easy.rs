@@ -13,3 +13,4 @@ pub mod longest_palindrome_409;
 mod k_th_distinc_string_in_an_array_2053;
 mod task_1945;
 mod task_1684;
+mod task_884;

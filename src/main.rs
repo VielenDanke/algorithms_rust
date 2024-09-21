@@ -9,6 +9,6 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let result = array::medium::task_386::Solution::lexical_order(13);
+    let result = array::medium::task_386::Solution::lexical_order(105);
     println!("{:?}", result);
 }

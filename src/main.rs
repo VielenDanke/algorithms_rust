@@ -9,6 +9,6 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let result = array::medium::task_386::Solution::lexical_order(105);
+    let result = array::hard::task_440::Solution::find_kth_number(804289384, 42641503);
     println!("{:?}", result);
 }

@@ -9,6 +9,5 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let result = array::hard::task_440::Solution::find_kth_number(804289384, 42641503);
-    println!("{:?}", result);
+    strings::medium::task_3043::Solution::longest_common_prefix_trie(vec![1, 10, 100], vec![1000]);
 }

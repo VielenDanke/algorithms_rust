@@ -1,6 +1,6 @@
 pub struct Solution;
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 #[derive(Default, Debug)]
 struct TrieNode {
@@ -77,5 +77,37 @@ impl Solution {
             ans = ans.max(trie.find_longest_prefix(&num))
         }
         ans
+    }
+
+    pub fn longest_common_prefix_i32(arr1: Vec<i32>, arr2: Vec<i32>) -> i32 {
+        let mut data = HashSet::new();
+
+        for mut v in arr1 {
+            while v != 0 {
+                data.insert(v);
+                v /= 10;
+            }
+        }
+        let mut max = -1;
+
+        for mut v in arr2 {
+            while v != 0 {
+                if data.contains(&v) {
+                    max = max.max(v);
+                    break;
+                }
+                v /= 10;
+            }
+        }
+        if max == -1 {
+            return 0;
+        }
+        let mut counter = 0;
+
+        while max != 0 {
+            max /= 10;
+            counter += 1;
+        }
+        counter
     }
 }

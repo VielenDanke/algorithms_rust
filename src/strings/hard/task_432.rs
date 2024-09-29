@@ -1,7 +1,8 @@
-use std::collections::HashMap;
+use std::collections::{BTreeMap, BTreeSet, HashMap};
 
 struct AllOne {
-    counter: HashMap<String, i32>
+    counter: BTreeMap<i32, BTreeSet<String>>,
+    exists: HashMap<String, i32>,
 }
 
 
@@ -10,47 +11,63 @@ struct AllOne {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl AllOne {
-
     fn new() -> Self {
         AllOne {
-            counter: HashMap::new(),
+            counter: BTreeMap::new(),
+            exists: HashMap::new(),
         }
     }
 
     fn inc(&mut self, key: String) {
-        *self.counter.entry(key).or_default() += 1;
+        if self.exists.contains_key(&key) {
+            let mut counter = *self.exists.get(&key).unwrap();
+            let current_counter = self.counter.entry(counter).or_insert(BTreeSet::new());
+            if current_counter.contains(&key) {
+                current_counter.remove(&key);
+                if current_counter.len() == 0 {
+                    self.counter.remove(&counter);
+                }
+                counter += 1;
+                self.counter.entry(counter).or_default().insert(key.clone());
+                self.exists.insert(key.clone(), counter);
+            }
+        } else {
+            let counter = 1;
+            self.exists.insert(key.clone(), counter);
+            self.counter.entry(counter).or_insert(BTreeSet::new()).insert(key.clone());
+        }
     }
 
     fn dec(&mut self, key: String) {
-        let entry = self.counter.entry(key.clone()).or_default();
-        *entry -= 1;
-        if *entry == 0 {
-            self.counter.remove(&key);
+        if self.exists.contains_key(&key) {
+            let mut counter = *self.exists.get(&key).unwrap();
+            let current_counter = self.counter.entry(counter).or_insert(BTreeSet::new());
+            current_counter.remove(&key);
+            if current_counter.len() == 0 {
+                self.counter.remove(&counter);
+            }
+            if counter == 1 {
+                self.exists.remove(&key);
+            } else {
+                counter -= 1;
+                self.exists.insert(key.clone(), counter);
+                self.counter.entry(counter).or_default().insert(key.clone());
+            }
         }
     }
 
-    fn get_max_key(&self) -> String {
-        let mut max = None;
-        let mut result = String::new();
-        for (k, &v) in self.counter.iter() {
-            if max.is_none() || max.unwrap() < v {
-                max = Some(v);
-                result = k.clone();
-            }
+    fn get_max_key(&mut self) -> String {
+        if self.counter.len() == 0 {
+            return String::new()
         }
-        result
+        self.counter.last_entry().unwrap().get().first().unwrap().clone()
     }
 
-    fn get_min_key(&self) -> String {
-        let mut min = None;
-        let mut result = String::new();
-        for (k, &v) in self.counter.iter() {
-            if min.is_none() || min.unwrap() > v {
-                min = Some(v);
-                result = k.clone();
-            }
+    fn get_min_key(&mut self) -> String {
+        if self.counter.len() == 0 {
+            return String::new()
         }
-        result
+        self.counter.first_entry().unwrap().get().first().unwrap().clone()
     }
 }
 

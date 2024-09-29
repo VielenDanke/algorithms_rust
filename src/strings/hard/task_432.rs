@@ -19,9 +19,10 @@ impl AllOne {
     }
 
     fn inc(&mut self, key: String) {
-        if self.exists.contains_key(&key) {
-            let mut counter = *self.exists.get(&key).unwrap();
-            let current_counter = self.counter.entry(counter).or_insert(BTreeSet::new());
+        let counter_opt = self.exists.get(&key);
+        if counter_opt.is_some() {
+            let mut counter = *counter_opt.unwrap();
+            let current_counter = self.counter.entry(counter).or_default();
             if current_counter.contains(&key) {
                 current_counter.remove(&key);
                 if current_counter.len() == 0 {
@@ -34,14 +35,15 @@ impl AllOne {
         } else {
             let counter = 1;
             self.exists.insert(key.clone(), counter);
-            self.counter.entry(counter).or_insert(BTreeSet::new()).insert(key.clone());
+            self.counter.entry(counter).or_default().insert(key.clone());
         }
     }
 
     fn dec(&mut self, key: String) {
-        if self.exists.contains_key(&key) {
-            let mut counter = *self.exists.get(&key).unwrap();
-            let current_counter = self.counter.entry(counter).or_insert(BTreeSet::new());
+        let counter_opt = self.exists.get(&key);
+        if counter_opt.is_some() {
+            let mut counter = *counter_opt.unwrap();
+            let current_counter = self.counter.entry(counter).or_default();
             current_counter.remove(&key);
             if current_counter.len() == 0 {
                 self.counter.remove(&counter);

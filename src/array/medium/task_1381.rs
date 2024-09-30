@@ -1,6 +1,5 @@
 struct CustomStack {
     stack: Vec<i32>,
-    size: i32,
 }
 
 
@@ -12,25 +11,17 @@ impl CustomStack {
     fn new(max_size: i32) -> Self {
         CustomStack {
             stack: Vec::with_capacity(max_size as usize),
-            size: max_size,
         }
     }
 
     fn push(&mut self, x: i32) {
-        if self.size == 0 {
-            return;
+        if self.stack.len() + 1 <= self.stack.capacity() {
+            self.stack.push(x);
         }
-        self.stack.push(x);
-        self.size -= 1;
     }
 
     fn pop(&mut self) -> i32 {
-        if self.stack.is_empty() {
-            -1
-        } else {
-            self.size += 1;
-            self.stack.pop().unwrap()
-        }
+        self.stack.pop().unwrap_or(-1)
     }
 
     fn increment(&mut self, k: i32, val: i32) {

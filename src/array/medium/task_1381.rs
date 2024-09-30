@@ -34,11 +34,8 @@ impl CustomStack {
     }
 
     fn increment(&mut self, k: i32, val: i32) {
-        if self.stack.is_empty() {
-            return;
-        }
-        for i in 0..self.stack.len().min(k as usize) {
-            *self.stack.get_mut(i).unwrap() += val;
+        for num in self.stack.iter_mut().take(k as usize) {
+            *num += val;
         }
     }
 }

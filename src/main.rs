@@ -9,5 +9,19 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    strings::medium::task_3043::Solution::longest_common_prefix_trie(vec![1, 10, 100], vec![1000]);
+    let mut stack = array::medium::task_1381::CustomStack::new(3);
+    stack.push(1);
+    stack.push(2);
+    stack.pop();
+    stack.push(2);
+    stack.push(3);
+    stack.push(4);
+    println!("{:?}", stack);
+    stack.increment(2, 100);
+    stack.increment(5, 100);
+    println!("{:?}", stack);
+    stack.pop();
+    stack.pop();
+    stack.pop();
+    stack.pop();
 }

@@ -21,9 +21,3 @@ impl MyCalendarTwo {
         true
     }
 }
-
-/**
- * Your MyCalendarTwo object will be instantiated and called as such:
- * let obj = MyCalendarTwo::new();
- * let ret_1: bool = obj.book(start, end);
- */

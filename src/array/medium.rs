@@ -38,3 +38,4 @@ pub mod task_386;
 mod task_729;
 mod task_731;
 mod task_641;
+pub mod task_1381;

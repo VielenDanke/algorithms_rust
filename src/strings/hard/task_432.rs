@@ -72,12 +72,3 @@ impl AllOne {
         self.counter.first_entry().unwrap().get().first().unwrap().clone()
     }
 }
-
-/**
- * Your AllOne object will be instantiated and called as such:
- * let obj = AllOne::new();
- * obj.inc(key);
- * obj.dec(key);
- * let ret_3: String = obj.get_max_key();
- * let ret_4: String = obj.get_min_key();
- */

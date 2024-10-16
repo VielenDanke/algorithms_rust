@@ -9,19 +9,6 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let mut stack = array::medium::task_1381::CustomStack::new(3);
-    stack.push(1);
-    stack.push(2);
-    stack.pop();
-    stack.push(2);
-    stack.push(3);
-    stack.push(4);
-    println!("{:?}", stack);
-    stack.increment(2, 100);
-    stack.increment(5, 100);
-    println!("{:?}", stack);
-    stack.pop();
-    stack.pop();
-    stack.pop();
-    stack.pop();
+    let diverse_string = backtracking::medium::task_1405::Solution::longest_diverse_string(1, 1, 7);
+    println!("{diverse_string}");
 }

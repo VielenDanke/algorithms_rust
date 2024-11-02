@@ -27,13 +27,12 @@ impl Solution {
 
     pub fn is_circular_sentence_better(sentence: String) -> bool {
         let sentence_bytes = sentence.as_bytes();
-        let char_1 = sentence_bytes[0];
-        let char_2 = sentence_bytes[sentence_bytes.len() - 1];
+        let n = sentence_bytes.len();
 
-        if char_1 != char_2 {
+        if sentence_bytes[0] != sentence_bytes[n - 1] {
             false
         } else {
-            for i in 1..sentence_bytes.len()-1 {
+            for i in 1..n - 1 {
                 if sentence_bytes[i] == b' ' && sentence_bytes[i - 1] != sentence_bytes[i + 1] {
                     return false;
                 }

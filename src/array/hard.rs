@@ -5,3 +5,4 @@ pub mod maximal_rectangle_85;
 pub mod minimum_cost_to_hire_k_workers_857;
 pub mod patching_array_330;
 pub mod task_440;
+mod task_862;

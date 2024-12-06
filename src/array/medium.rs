@@ -46,3 +46,4 @@ mod task_2070;
 mod task_3254;
 mod task_1861;
 mod task_1975;
+pub mod task_2554;

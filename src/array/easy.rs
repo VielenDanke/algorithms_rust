@@ -19,3 +19,4 @@ pub mod lucky_numbers_in_matrix_1380;
 pub mod make_two_arrays_equal_by_reversing_subarrays_1460;
 pub mod task_703;
 mod task_1331;
+mod task_2558;

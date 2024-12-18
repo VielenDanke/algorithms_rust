@@ -50,3 +50,4 @@ pub mod task_2554;
 pub mod task_1760;
 mod task_3152;
 mod task_2779;
+mod task_1792;

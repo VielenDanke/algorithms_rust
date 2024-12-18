@@ -20,3 +20,6 @@ pub mod make_two_arrays_equal_by_reversing_subarrays_1460;
 pub mod task_703;
 mod task_1331;
 mod task_2558;
+mod task_3264;
+mod task_2762;
+mod task_1475;

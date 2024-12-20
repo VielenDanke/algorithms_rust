@@ -16,7 +16,7 @@ impl Solution {
                 lptr = nums[i] - 2;
                 rptr = nums[i] + 2;
                 while nums[j] >= lptr && nums[j] <= rptr {
-                    lptr = lptr.asmax(nums[j] - 2);
+                    lptr = lptr.max(nums[j] - 2);
                     rptr = rptr.min(nums[j] + 2);
                     j -= 1;
                 }

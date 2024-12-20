@@ -9,9 +9,8 @@ pub mod stack;
 pub mod math;
 
 fn main() {
-    let i = array::medium::task_1760::Solution::minimum_size(
-        vec![9],
-        2,
+    let i = array::medium::task_769::Solution::max_chunks_to_sorted(
+        vec![2,0,1,3],
     );
     println!("{}", i);
 }

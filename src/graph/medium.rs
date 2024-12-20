@@ -17,3 +17,4 @@ pub mod find_the_city_with_the_smallest_number_of_neighbors_at_threshold_distanc
 mod task_959;
 mod task_947;
 mod task_3243;
+mod task_2415;

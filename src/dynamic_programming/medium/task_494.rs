@@ -13,8 +13,7 @@ impl Solution {
                     0
                 }
             } else {
-                let mut result = 0;
-                result += backtrack(nums, target, sum + nums[idx] * -1, total_sum, idx + 1, memo);
+                let mut result = backtrack(nums, target, sum + nums[idx] * -1, total_sum, idx + 1, memo);
                 result += backtrack(nums, target, sum + nums[idx], total_sum, idx + 1, memo);
                 memo[idx][(total_sum + sum) as usize] = Some(result);
                 result

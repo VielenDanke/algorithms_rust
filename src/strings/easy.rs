@@ -19,3 +19,4 @@ mod task_2490;
 mod task_796;
 mod task_1455;
 mod task_1422;
+mod task_1408;

@@ -8,17 +8,20 @@ impl Solution {
         // delete the closest to the left that s[j] == s[i]
         // delete the closest to the right that s[k] == s[i]
         let mut m = HashMap::new();
-        let mut delete_count = 0;
 
         for &b in s.as_bytes().iter() {
             *m.entry(b).or_insert(0) += 1;
         }
-
-        for (_, frequency) in m.into_iter() {
-            delete_count += if frequency % 2 == 1 { frequency - 1 } else { frequency - 2 };
-        }
-
-        s.len() as i32 - delete_count
+        s.len() as i32
+            - m.into_iter()
+                .map(|(_, frequency)| {
+                    if frequency % 2 == 1 {
+                        frequency - 1
+                    } else {
+                        frequency - 2
+                    }
+                })
+                .sum::<i32>()
     }
 
     pub fn minimum_length_brute_force(s: String) -> i32 {

@@ -7,10 +7,9 @@ pub mod array;
 pub mod backtracking;
 pub mod stack;
 pub mod math;
+pub mod structures;
 
 fn main() {
-    let i = array::easy::task_1752::Solution::check(
-        vec![1, 2, 3],
-    );
-    println!("{}", i);
+    let i = array::medium::task_3066::Solution::min_operations(vec![1, 1, 2, 4, 9], 20);
+    println!("{:?}", i);
 }

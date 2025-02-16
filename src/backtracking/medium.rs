@@ -6,3 +6,4 @@ pub mod the_number_of_beautiful_subsets_2597;
 mod task_2530;
 pub mod task_1405;
 mod task_2516;
+mod task_1718;

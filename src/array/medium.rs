@@ -58,3 +58,6 @@ mod task_2661;
 mod task_2948;
 mod task_1462;
 mod task_2658;
+mod task_3160;
+mod task_2364;
+pub mod task_3066;

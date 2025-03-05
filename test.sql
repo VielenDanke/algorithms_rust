@@ -1,4 +1,0 @@
-{"timestamp": "2025-02-28 10:42:19,831", "level": "INFO", "message": "202502271550"}
-['202502271620_delete_from_favorites.sql', '202502281220_delete_from_favorites.sql', '202502281221_delete_from_invoice.sql', '202502281222_update_invoice_processor.sql']
-{"timestamp": "2025-02-28 10:42:19,831", "level": "INFO", "message": "RUN MIGRATION /tmp/migrations/202502271620_delete_from_favorites.sql"}
-{"timestamp": "2025-02-28 10:42:20,177", "level": "ERROR", "message": "update or delete on table \"favorites\" violates foreign key constraint \"payment_favorites_id_fkey\" on table \"payment\"\nDETAIL:  Key (id)=(763) is still referenced from table \"payment\".\n"}

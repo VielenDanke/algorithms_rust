@@ -10,6 +10,6 @@ pub mod math;
 pub mod structures;
 
 fn main() {
-    let i = array::medium::task_3066::Solution::min_operations(vec![1, 1, 2, 4, 9], 20);
+    let i = array::medium::task_3306::Solution::count_of_substrings("iqeaouqi".to_string(), 2);
     println!("{:?}", i);
 }

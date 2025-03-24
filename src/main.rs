@@ -10,6 +10,6 @@ pub mod math;
 pub mod structures;
 
 fn main() {
-    let i = array::medium::task_3306::Solution::count_of_substrings("iqeaouqi".to_string(), 2);
+    let i = array::medium::task_2401::Solution::longest_nice_subarray(vec![1,3,8,48,10]);
     println!("{:?}", i);
 }

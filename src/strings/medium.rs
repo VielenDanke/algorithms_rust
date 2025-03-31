@@ -27,3 +27,4 @@ mod task_1930;
 mod task_2381;
 mod task_2116;
 mod task_3223;
+mod task_763;

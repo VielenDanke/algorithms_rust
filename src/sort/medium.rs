@@ -6,3 +6,5 @@ pub mod most_profit_assigning_work_826;
 pub mod minimum_number_of_days_to_make_m_bouquets_1482;
 pub mod sort_the_jumbled_numbers_2191;
 mod task_3394;
+mod task_2033;
+pub mod task_2780;

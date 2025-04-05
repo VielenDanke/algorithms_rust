@@ -5,7 +5,7 @@ pub struct Solution;
 impl Solution {
     pub fn partition_labels(s: String) -> Vec<i32> {
         let mut last_occurrence = HashMap::new();
-        
+
         for (i, c) in s.chars().enumerate() {
             last_occurrence.insert(c, i);
         }

@@ -10,6 +10,6 @@ pub mod strings;
 pub mod structures;
 
 fn main() {
-    let i = sort::medium::task_2780::Solution::minimum_index(vec![1, 2, 2, 2]);
+    let i = array::easy::task_1863::Solution::subset_xor_sum(vec![5, 1, 6]);
     println!("{:?}", i);
 }

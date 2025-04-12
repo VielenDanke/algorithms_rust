@@ -29,3 +29,6 @@ mod task_2529;
 mod task_2206;
 mod task_2873;
 pub mod task_1863;
+mod task_3375;
+mod task_3396;
+mod task_2843;

@@ -8,3 +8,4 @@ pub mod task_1405;
 mod task_2516;
 mod task_1718;
 mod task_2579;
+mod task_2140;

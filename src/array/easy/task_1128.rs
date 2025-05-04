@@ -51,7 +51,7 @@ impl Solution {
         counter
     }
 
-    pub fn num_equiv_domino_pairs_brute(dominoes: Vec<Vec<i32>>) -> i32 {
+    pub fn num_equiv_domino_pairs(dominoes: Vec<Vec<i32>>) -> i32 {
         let mut m: HashMap<Pair, i32> = HashMap::new();
         let mut count = 0;
 

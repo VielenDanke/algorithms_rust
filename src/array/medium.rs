@@ -78,3 +78,4 @@ mod task_781;
 mod task_2145;
 mod task_2962;
 mod task_1007;
+mod task_2918;

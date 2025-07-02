@@ -10,6 +10,5 @@ pub mod strings;
 pub mod structures;
 
 fn main() {
-    let i = array::easy::task_1863::Solution::subset_xor_sum(vec![5, 1, 6]);
-    println!("{:?}", i);
+    println!("{}", strings::medium::task_3330::Solution::possible_string_count("ere".to_string()));
 }

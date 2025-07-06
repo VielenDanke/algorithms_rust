@@ -22,3 +22,4 @@ mod task_1422;
 mod task_1408;
 mod task_3042;
 mod task_2185;
+mod task_3304;

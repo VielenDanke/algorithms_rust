@@ -39,3 +39,5 @@ mod task_1128;
 mod task_1550;
 mod task_2094;
 mod task_3423;
+mod task_594;
+mod task_1394;

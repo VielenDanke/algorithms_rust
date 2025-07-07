@@ -82,3 +82,4 @@ mod task_2918;
 mod task_2616;
 mod task_2966;
 mod task_1498;
+pub mod task_1353;

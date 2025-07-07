@@ -10,5 +10,5 @@ pub mod strings;
 pub mod structures;
 
 fn main() {
-    println!("{}", strings::medium::task_3330::Solution::possible_string_count("ere".to_string()));
+    println!("{}", array::medium::task_1353::Solution::max_events(vec![vec![1,4],vec![4,4],vec![2,2],vec![3,4],vec![1,1]]));
 }

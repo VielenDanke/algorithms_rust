@@ -32,14 +32,17 @@ impl FindSumPairs {
     }
 
     fn add(&mut self, index: i32, val: i32) {
+        // counter current value
         let current_value = self.nums2[index as usize];
         self.counter
             .entry(current_value)
             .and_modify(|v| *v -= 1)
             .or_insert(0);
-        self.nums2[index as usize] = current_value + val;
+        // set up and counter next value
+        let next_value = current_value + val;
+        self.nums2[index as usize] = next_value;
         self.counter
-            .entry(current_value + val)
+            .entry(next_value)
             .and_modify(|v| *v += 1)
             .or_insert(1);
     }
@@ -47,13 +50,12 @@ impl FindSumPairs {
     fn count(&self, tot: i32) -> i32 {
         let mut counter = 0;
         for i in 0..self.nums1.len() {
-            let current_val = self.nums1[i];
-
-            if let Some(&v) = self.counter.get(&(tot - current_val)) {
-                if v > 0 {
-                    counter += v;
-                }
-            }
+            // add everything greater than 0
+            counter += *self
+                .counter
+                .get(&(tot - self.nums1[i]))
+                .unwrap_or(&0)
+                .max(&0);
         }
         counter
     }

@@ -85,3 +85,4 @@ mod task_1498;
 pub mod task_1353;
 mod task_3439;
 mod task_2410;
+mod task_1695;

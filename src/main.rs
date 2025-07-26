@@ -10,5 +10,5 @@ pub mod strings;
 pub mod structures;
 
 fn main() {
-    println!("{}", array::medium::task_1353::Solution::max_events(vec![vec![1,4],vec![4,4],vec![2,2],vec![3,4],vec![1,1]]));
+    println!("{:?}", strings::medium::task_1233::Solution::remove_subfolders(vec!["/a".to_string(),"/a/b".to_string(),"/c/d".to_string(),"/c/d/e".to_string(),"/c/f".to_string()]));
 }

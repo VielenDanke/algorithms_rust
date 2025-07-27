@@ -10,5 +10,5 @@ pub mod strings;
 pub mod structures;
 
 fn main() {
-    println!("{:?}", strings::medium::task_1233::Solution::remove_subfolders(vec!["/a".to_string(),"/a/b".to_string(),"/c/d".to_string(),"/c/d/e".to_string(),"/c/f".to_string()]));
+    println!("{:?}", strings::medium::task_1233::Solution::remove_subfolders_faster(vec!["/a".to_string(),"/a/b".to_string(),"/c/d".to_string(),"/c/d/e".to_string(),"/c/f".to_string()]));
 }

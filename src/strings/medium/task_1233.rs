@@ -28,7 +28,9 @@ impl Tree {
 }
 
 impl Solution {
-    pub fn remove_subfolders(folders: Vec<String>) -> Vec<String> {
+    pub fn remove_subfolders_prefix_tree(mut folders: Vec<String>) -> Vec<String> {
+        folders.sort_unstable_by_key(|v| v.len());
+
         let mut result = vec![];
 
         let mut root = Tree::new();
@@ -47,6 +49,10 @@ impl Solution {
                     .children
                     .entry(folder.clone())
                     .or_insert(Tree::build(folder.clone(), false));
+
+                if possible_child.is_leaf {
+                    break;
+                }
 
                 if i == split_folders.len() - 1 {
                     possible_child.is_leaf = true;
@@ -70,5 +76,19 @@ impl Solution {
         dfs(&root, &mut result, &mut vec![]);
 
         result
+    }
+
+    pub fn remove_subfolders_faster(mut folder: Vec<String>) -> Vec<String> {
+        folder.sort_unstable();
+
+        let mut answer = vec![folder[0].to_string()];
+
+        for i in 1..folder.len() {
+            if !folder[i].starts_with(&format!("{}/", answer.last().unwrap())) {
+                answer.push(folder[i].to_string());
+            }
+        }
+
+        answer
     }
 }

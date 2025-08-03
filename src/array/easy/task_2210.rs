@@ -3,6 +3,7 @@ pub struct Solution;
 impl Solution {
     pub fn count_hills_valleys(nums: Vec<i32>) -> i32 {
         let n = nums.len();
+        
         if n < 3 {
             return 0;
         }

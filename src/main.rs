@@ -1,14 +1,56 @@
-pub mod array;
-pub mod backtracking;
-pub mod dynamic_programming;
-pub mod graph;
-pub mod linked_list;
-pub mod math;
-pub mod sort;
-pub mod stack;
-pub mod strings;
-pub mod structures;
+use std::collections::HashSet;
+// Импортируем необходимые модули.
+// `std::fs` для работы с файловой системой.
+// `serde` и `serde_json` для десериализации JSON.
+use serde::Deserialize;
+use std::fs;
 
 fn main() {
-    println!("{:?}", strings::medium::task_1233::Solution::remove_subfolders_faster(vec!["/a".to_string(),"/a/b".to_string(),"/c/d".to_string(),"/c/d/e".to_string(),"/c/f".to_string()]));
+    // Определяем путь к файлу logs.json.
+    // Файл должен находиться в корневой директории вашего проекта.
+    let file_path = "logs.json";
+
+    // Пытаемся прочитать содержимое файла в строку.
+    // `read_to_string` возвращает `Result`, поэтому мы используем `match` для обработки успеха или ошибки.
+    let json_data = match fs::read_to_string(file_path) {
+        Ok(data) => data, // Если чтение успешно, используем полученные данные.
+        Err(e) => {
+            // Если произошла ошибка при чтении файла, выводим сообщение и завершаем программу.
+            eprintln!("Ошибка при чтении файла {}: {}", file_path, e);
+            // Если вы хотите, чтобы программа продолжала работу даже при ошибке чтения,
+            // вы можете вернуть здесь какой-то дефолт или пустую строку, но
+            // для парсинга это приведет к последующей ошибке парсинга JSON.
+            // panic! - это простой способ завершить выполнение при критической ошибке.
+            panic!("Не удалось прочитать файл JSON.");
+        }
+    };
+
+    // Определяем структуру, которая будет соответствовать одному объекту в JSON.
+    // #[derive(Debug, Deserialize)] автоматически генерирует код для десериализации.
+    #[derive(Debug, Deserialize)]
+    struct Bucket {
+        key: String,    // Поле "key" будет строкой
+        doc_count: u32, // Поле "doc_count" будет беззнаковым 32-битным целым числом
+    }
+
+    // Попытка десериализовать JSON-строку (теперь прочитанную из файла) в вектор структур Bucket.
+    match serde_json::from_str::<Vec<Bucket>>(&json_data) {
+        Ok(buckets) => {
+            // Если десериализация прошла успешно, извлекаем все ключи.
+            // `into_iter()` преобразует вектор во итератор, потребляющий элементы,
+            // `map` преобразует каждый Bucket в его поле `key`,
+            // `collect` собирает результаты в новый вектор `String`.
+            let keys: HashSet<String> = buckets.into_iter().map(|b| b.key).collect::<HashSet<String>>();
+
+            // Выводим полученные ключи.
+            println!("Извлеченные ключи:");
+            for key in keys {
+                println!("{}", key);
+            }
+        }
+        Err(e) => {
+            // Если произошла ошибка при парсинге JSON, выводим сообщение об ошибке.
+            eprintln!("Ошибка парсинга JSON: {}", e);
+        }
+    }
 }

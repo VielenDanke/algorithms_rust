@@ -1,3 +1,7 @@
+mod math;
+mod dynamic_programming;
+mod array;
+
 use std::collections::HashSet;
 // Импортируем необходимые модули.
 // `std::fs` для работы с файловой системой.

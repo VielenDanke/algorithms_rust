@@ -8,7 +8,7 @@ impl Solution {
 
         let mut total = 0.0;
         let mut pq = std::collections::BinaryHeap::new();
-        let mut n = classes.len();
+        let n = classes.len();
 
         for c in classes.into_iter() {
             total += c[0] as f64 / c[1] as f64;

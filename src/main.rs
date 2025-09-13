@@ -1,6 +1,7 @@
 mod math;
 mod dynamic_programming;
 mod array;
+mod strings;
 
 use std::collections::HashSet;
 // Импортируем необходимые модули.

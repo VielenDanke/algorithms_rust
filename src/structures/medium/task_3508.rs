@@ -1,94 +1,65 @@
-use std::collections::{HashMap, VecDeque, HashSet};
+use std::collections::{HashMap, HashSet, VecDeque};
 
 struct Router {
     memory_limit: usize,
-    q: VecDeque<(i32, i32, i32)>,  // (source, destination, timestamp)
-    router: HashSet<(i32, i32, i32)>,
-    dest: HashMap<i32, Vec<i32>>,  // destination -> sorted timestamps
+    queue: VecDeque<(i32, i32, i32)>, // (source, destination, timestamp)
+    seen: HashSet<String>,            // duplicate detection
+    dest_map: HashMap<i32, Vec<i32>>, // destination -> timestamps
 }
 
 impl Router {
-    /// Initialize router with memory limit
-    /// TC: O(1), SC: O(1)
+    fn make_key(source: i32, dest: i32, timestamp: i32) -> String {
+        format!("{},{},{}", source, dest, timestamp)
+    }
+
     fn new(memory_limit: i32) -> Self {
         Router {
             memory_limit: memory_limit as usize,
-            q: VecDeque::new(),
-            router: HashSet::new(),
-            dest: HashMap::new(),
+            queue: VecDeque::new(),
+            seen: HashSet::new(),
+            dest_map: HashMap::new(),
         }
     }
 
-    /// Add packet with duplicate check and memory management
-    /// TC: O(log k), SC: O(1) amortized
     fn add_packet(&mut self, source: i32, destination: i32, timestamp: i32) -> bool {
-        let packet = (source, destination, timestamp);
-
-        // Check for duplicate
-        if self.router.contains(&packet) {
-            return false;
+        let key = Self::make_key(source, destination, timestamp);
+        if self.seen.contains(&key) {
+            return false; // duplicate
         }
 
-        // Handle memory limit
-        if self.q.len() >= self.memory_limit {
-            if let Some((old_source, old_dest, old_timestamp)) = self.q.pop_front() {
-                let old_packet = (old_source, old_dest, old_timestamp);
-                self.router.remove(&old_packet);
-
-                // Remove from destination timestamps
-                if let Some(timestamps) = self.dest.get_mut(&old_dest) {
-                    if let Some(pos) = timestamps.iter().position(|&x| x == old_timestamp) {
-                        timestamps.remove(pos);
-                    }
-                    if timestamps.is_empty() {
-                        self.dest.remove(&old_dest);
-                    }
-                }
-            }
+        if self.queue.len() == self.memory_limit {
+            self.forward_packet(); // evict oldest
         }
 
-        // Add new packet
-        self.q.push_back(packet);
-        self.router.insert(packet);
-
-        // Insert timestamp in sorted order
-        let timestamps = self.dest.entry(destination).or_insert_with(Vec::new);
-        let insert_pos = timestamps.binary_search(&timestamp).unwrap_or_else(|x| x);
-        timestamps.insert(insert_pos, timestamp);
-
+        self.queue.push_back((source, destination, timestamp));
+        self.seen.insert(key);
+        self.dest_map.entry(destination).or_insert(vec![]).push(timestamp);
         true
     }
 
-    /// Forward oldest packet
-    /// TC: O(log k), SC: O(1)
     fn forward_packet(&mut self) -> Vec<i32> {
-        if let Some((source, destination, timestamp)) = self.q.pop_front() {
-            let packet = (source, destination, timestamp);
-            self.router.remove(&packet);
+        if let Some((s, d, t)) = self.queue.pop_front() {
+            let key = Self::make_key(s, d, t);
+            self.seen.remove(&key);
 
-            // Remove from destination timestamps
-            if let Some(timestamps) = self.dest.get_mut(&destination) {
-                if let Some(pos) = timestamps.iter().position(|&x| x == timestamp) {
-                    timestamps.remove(pos);
+            if let Some(times) = self.dest_map.get_mut(&d) {
+                if !times.is_empty() {
+                    times.remove(0); // O(n), usually small
                 }
-                if timestamps.is_empty() {
-                    self.dest.remove(&destination);
+                if times.is_empty() {
+                    self.dest_map.remove(&d);
                 }
             }
 
-            vec![source, destination, timestamp]
+            vec![s, d, t]
         } else {
             vec![]
         }
     }
 
-    /// Count packets in time range using binary search
-    /// TC: O(log k), SC: O(1)
     fn get_count(&self, destination: i32, start_time: i32, end_time: i32) -> i32 {
-        if let Some(timestamps) = self.dest.get(&destination) {
-            let left_idx = timestamps.binary_search(&start_time).unwrap_or_else(|x| x);
-            let right_idx = timestamps.binary_search(&(end_time + 1)).unwrap_or_else(|x| x);
-            (right_idx - left_idx) as i32
+        if let Some(times) = self.dest_map.get(&destination) {
+            times.iter().filter(|&&t| t >= start_time && t <= end_time).count() as i32
         } else {
             0
         }

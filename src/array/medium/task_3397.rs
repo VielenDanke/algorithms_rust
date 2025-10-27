@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 pub struct Solution;
 
 /*
@@ -23,5 +25,19 @@ impl Solution {
             }
         }
         distinct_count
+    }
+
+    pub fn max_distinct_elements_set(mut nums: Vec<i32>, k: i32) -> i32 {
+        nums.sort_unstable();
+        let mut set = HashSet::new();
+
+        for num in nums.iter().map(|&v| v as i64) {
+            let mut to_add: i64 = -k as i64;
+            while to_add <= k as i64 && !set.insert(num + to_add) {
+                to_add += 1;
+            }
+        }
+
+        set.iter().count() as i32
     }
 }

@@ -100,3 +100,5 @@ mod task_3494;
 mod task_2598;
 mod task_3350;
 mod task_3397;
+mod task_3346;
+mod task_2125;

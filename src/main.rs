@@ -4,59 +4,94 @@ mod array;
 mod strings;
 mod structures;
 
-use std::collections::HashSet;
-// Импортируем необходимые модули.
-// `std::fs` для работы с файловой системой.
-// `serde` и `serde_json` для десериализации JSON.
-use serde::Deserialize;
-use std::fs;
+// Импортируем BTreeMap для хранения (ключ, значение)
+use std::collections::BTreeMap;
+// Импортируем крейт Regex
+use regex::Regex;
+// --- Новые импорты для работы с файлами ---
+use std::fs::File; // Для открытия файла
+use std::io::{BufRead, BufReader}; // Для буферизованного чтения (построчно)
+use std::path::Path; // Для работы с путями к файлам
 
-fn main() {
-    // Определяем путь к файлу logs.json.
-    // Файл должен находиться в корневой директории вашего проекта.
-    let file_path = "logs.json";
+///
+/// Эта функция обрабатывает ОДНУ строку и обновляет карту (BTreeMap)
+///
+/// # Аргументы
+/// * `line` - Ссылка на строку (&str), которую нужно проанализировать.
+/// * `re` - Ссылка на скомпилированный Regex.
+/// * `counts` - Мутабельная (изменяемая) ссылка на нашу карту BTreeMap.
+///
+fn process_line(line: &str, re: &Regex, counts: &mut BTreeMap<u32, u32>) {
 
-    // Пытаемся прочитать содержимое файла в строку.
-    // `read_to_string` возвращает `Result`, поэтому мы используем `match` для обработки успеха или ошибки.
-    let json_data = match fs::read_to_string(file_path) {
-        Ok(data) => data, // Если чтение успешно, используем полученные данные.
-        Err(e) => {
-            // Если произошла ошибка при чтении файла, выводим сообщение и завершаем программу.
-            eprintln!("Ошибка при чтении файла {}: {}", file_path, e);
-            // Если вы хотите, чтобы программа продолжала работу даже при ошибке чтения,
-            // вы можете вернуть здесь какой-то дефолт или пустую строку, но
-            // для парсинга это приведет к последующей ошибке парсинга JSON.
-            // panic! - это простой способ завершить выполнение при критической ошибке.
-            panic!("Не удалось прочитать файл JSON.");
-        }
-    };
+    // .captures_iter() находит все совпадения (даже если их несколько в одной строке)
+    for caps in re.captures_iter(line) {
 
-    // Определяем структуру, которая будет соответствовать одному объекту в JSON.
-    // #[derive(Debug, Deserialize)] автоматически генерирует код для десериализации.
-    #[derive(Debug, Deserialize)]
-    struct Bucket {
-        key: String,    // Поле "key" будет строкой
-        doc_count: u32, // Поле "doc_count" будет беззнаковым 32-битным целым числом
-    }
+        // .get(1) - получаем первую захватывающую группу (наши цифры)
+        if let Some(id_match) = caps.get(1) {
 
-    // Попытка десериализовать JSON-строку (теперь прочитанную из файла) в вектор структур Bucket.
-    match serde_json::from_str::<Vec<Bucket>>(&json_data) {
-        Ok(buckets) => {
-            // Если десериализация прошла успешно, извлекаем все ключи.
-            // `into_iter()` преобразует вектор во итератор, потребляющий элементы,
-            // `map` преобразует каждый Bucket в его поле `key`,
-            // `collect` собирает результаты в новый вектор `String`.
-            let keys: HashSet<String> = buckets.into_iter().map(|b| b.key).collect::<HashSet<String>>();
+            let id_str = id_match.as_str();
 
-            // Выводим полученные ключи.
-            println!("Извлеченные ключи:");
-            for key in keys {
-                println!("{}", key);
+            // .parse::<u32>() пытается превратить строку "190" в число 190
+            if let Ok(id_num) = id_str.parse::<u32>() {
+
+                // --- Агрегация в BTreeMap ---
+                // .entry(id_num).or_insert(0) получает ссылку на счетчик
+                let count = counts.entry(id_num).or_insert(0);
+                // *count += 1 - увеличиваем счетчик
+                *count += 1;
             }
         }
-        Err(e) => {
-            // Если произошла ошибка при парсинге JSON, выводим сообщение об ошибке.
-            eprintln!("Ошибка парсинга JSON: {}", e);
+    }
+}
+
+
+// --- Точка входа в программу ---
+fn main() {
+
+    // --- 1. Определяем все переменные ---
+    let file_path = "logs.txt"; // Имя нашего файла
+
+    // Тот же шаблон Regex
+    let pattern = r"service_id:\s*(\d+)";
+
+    // Компилируем Regex один раз. .expect() вызовет панику, если шаблон неверный
+    let re = Regex::new(pattern).expect("Ошибка компиляции Regex");
+
+    // Создаем пустую BTreeMap, которую будем наполнять
+    let mut id_counts: BTreeMap<u32, u32> = BTreeMap::new();
+
+    println!("Читаем файл: {}...", file_path);
+
+    // --- 2. Открываем файл ---
+    // File::open может вернуть ошибку, поэтому используем .expect()
+    let file = File::open(Path::new(file_path))
+        .expect("Не удалось открыть файл input.log");
+
+    // Оборачиваем файл в BufReader для эффективного построчного чтения
+    let reader = BufReader::new(file);
+
+    // --- 3. Читаем файл построчно ---
+    // reader.lines() возвращает итератор по строкам (точнее, по Result<String>)
+    for line_result in reader.lines() {
+
+        // .expect() здесь нужен, т.к. чтение строки тоже может вызвать ошибку
+        let line = line_result.expect("Не удалось прочитать строку");
+
+        // Передаем строку, Regex и карту в нашу функцию-обработчик
+        process_line(&line, &re, &mut id_counts);
+    }
+
+    // --- 4. Печатаем финальный результат ---
+    println!("\n✅ Результат подсчета (BTreeMap):");
+    println!("{:#?}", id_counts);
+
+    println!("\nПодробный отчет:");
+    if id_counts.is_empty() {
+        println!("  'service_id' не найдены.");
+    } else {
+        // Итерируем по BTreeMap (он уже отсортирован!)
+        for (service_id, count) in &id_counts {
+            println!("  ID {}: встречается {} раз(а)", service_id, count);
         }
     }
 }

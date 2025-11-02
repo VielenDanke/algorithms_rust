@@ -22,3 +22,4 @@ mod taks_2471;
 mod task_889;
 mod task_3341;
 mod task_2359;
+mod task_2257;

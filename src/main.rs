@@ -3,6 +3,7 @@ mod dynamic_programming;
 mod array;
 mod strings;
 mod structures;
+mod graph;
 
 // Импортируем BTreeMap для хранения (ключ, значение)
 use std::collections::BTreeMap;

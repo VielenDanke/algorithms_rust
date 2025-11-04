@@ -49,3 +49,4 @@ mod task_3461;
 mod task_1716;
 mod task_3354;
 mod task_3289;
+mod task_3318;

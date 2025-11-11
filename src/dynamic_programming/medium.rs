@@ -8,3 +8,4 @@ mod task_3201;
 mod task_808;
 mod task_2787;
 mod task_1578;
+mod task_474;

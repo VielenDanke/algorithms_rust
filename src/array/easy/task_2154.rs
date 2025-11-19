@@ -20,7 +20,7 @@ impl Solution {
         for num in nums {
             store.insert(num);
 
-            while let Some(v) = store.get(&original) {
+            while store.contains(&original) {
                 original *= 2;
             }
         }

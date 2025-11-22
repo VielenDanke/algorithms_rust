@@ -49,51 +49,5 @@ fn process_line(line: &str, re: &Regex, counts: &mut BTreeMap<u32, u32>) {
 
 // --- Точка входа в программу ---
 fn main() {
-
-    // --- 1. Определяем все переменные ---
-    let file_path = "logs.txt"; // Имя нашего файла
-
-    // Тот же шаблон Regex
-    let pattern = r"service_id:\s*(\d+)";
-
-    // Компилируем Regex один раз. .expect() вызовет панику, если шаблон неверный
-    let re = Regex::new(pattern).expect("Ошибка компиляции Regex");
-
-    // Создаем пустую BTreeMap, которую будем наполнять
-    let mut id_counts: BTreeMap<u32, u32> = BTreeMap::new();
-
-    println!("Читаем файл: {}...", file_path);
-
-    // --- 2. Открываем файл ---
-    // File::open может вернуть ошибку, поэтому используем .expect()
-    let file = File::open(Path::new(file_path))
-        .expect("Не удалось открыть файл input.log");
-
-    // Оборачиваем файл в BufReader для эффективного построчного чтения
-    let reader = BufReader::new(file);
-
-    // --- 3. Читаем файл построчно ---
-    // reader.lines() возвращает итератор по строкам (точнее, по Result<String>)
-    for line_result in reader.lines() {
-
-        // .expect() здесь нужен, т.к. чтение строки тоже может вызвать ошибку
-        let line = line_result.expect("Не удалось прочитать строку");
-
-        // Передаем строку, Regex и карту в нашу функцию-обработчик
-        process_line(&line, &re, &mut id_counts);
-    }
-
-    // --- 4. Печатаем финальный результат ---
-    println!("\n✅ Результат подсчета (BTreeMap):");
-    println!("{:#?}", id_counts);
-
-    println!("\nПодробный отчет:");
-    if id_counts.is_empty() {
-        println!("  'service_id' не найдены.");
-    } else {
-        // Итерируем по BTreeMap (он уже отсортирован!)
-        for (service_id, count) in &id_counts {
-            println!("  ID {}: встречается {} раз(а)", service_id, count);
-        }
-    }
+    println!("{:?}", array::hard::task_757::Solution::intersection_size_two(vec![vec![1,3],vec![3,7],vec![8,9]]));
 }

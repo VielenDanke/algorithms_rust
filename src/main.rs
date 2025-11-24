@@ -5,6 +5,7 @@ mod strings;
 mod structures;
 mod graph;
 mod hackerrank;
+mod backtracking;
 
 // Импортируем BTreeMap для хранения (ключ, значение)
 use std::collections::BTreeMap;

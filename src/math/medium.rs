@@ -6,3 +6,4 @@ mod task_2438;
 mod task_611;
 mod task_120;
 mod task_2048;
+mod task_1015;

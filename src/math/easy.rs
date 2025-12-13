@@ -7,3 +7,4 @@ mod task_976;
 mod task_1518;
 mod task_3370;
 mod task_1523;
+mod task_1925;

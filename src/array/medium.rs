@@ -108,3 +108,6 @@ mod task_3228;
 mod task_2536;
 mod task_1513;
 mod task_3387;
+mod task_3583;
+mod task_3577;
+mod task_3531;

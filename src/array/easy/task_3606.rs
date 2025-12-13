@@ -24,14 +24,6 @@ impl Solution {
     }
 
     fn is_code_valid(code: &str) -> bool {
-        if code.is_empty() {
-            return false;
-        }
-        for ch in code.chars() {
-            if !ch.is_alphanumeric() && ch != '_' {
-                return false;
-            }
-        }
-        true
+        !code.is_empty() && code.chars().all(|ch| ch.is_alphanumeric() || ch == '_')
     }
 }

@@ -7,13 +7,13 @@ impl Solution {
         (0..codes.len())
             .filter(|&i| is_active[i])
             .filter(|&i| Self::is_code_valid(&codes[i]))
-            .filter_map(|i| Self::get_business_priority(&business_lines[i], &codes[i]))
+            .filter_map(|i| Self::get_business_priority_with_code(&business_lines[i], &codes[i]))
             .sorted_unstable()
             .map(|(_, code)| code)
             .collect()
     }
 
-    fn get_business_priority(business_line: &str, code: &String) -> Option<(u8, String)> {
+    fn get_business_priority_with_code(business_line: &str, code: &String) -> Option<(u8, String)> {
         match business_line {
             "electronics" => Some((0, code.clone())),
             "grocery" => Some((1, code.clone())),

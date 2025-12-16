@@ -11,3 +11,4 @@ mod task_3321;
 pub mod task_757;
 mod task_3625;
 mod task_2147;
+mod task_3562;

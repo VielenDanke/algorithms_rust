@@ -111,3 +111,4 @@ mod task_3387;
 mod task_3583;
 mod task_3577;
 mod task_3531;
+mod task_3652;

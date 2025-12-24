@@ -57,3 +57,4 @@ mod task_3190;
 mod task_1018;
 mod task_3432;
 mod task_3606;
+pub mod task_3074;

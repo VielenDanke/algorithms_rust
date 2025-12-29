@@ -47,6 +47,6 @@ fn process_line(line: &str, re: &Regex, counts: &mut BTreeMap<u32, u32>) {
 fn main() {
     println!(
         "{:?}",
-        array::easy::task_3074::Solution::minimum_boxes(vec![5, 5, 5], vec![2, 4, 2, 7])
+        array::easy::task_1351::Solution::count_negatives(vec![vec![7, -3]])
     );
 }

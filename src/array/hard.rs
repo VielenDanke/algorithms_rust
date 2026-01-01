@@ -12,3 +12,4 @@ pub mod task_757;
 mod task_3625;
 mod task_2147;
 mod task_3562;
+mod task_1970;

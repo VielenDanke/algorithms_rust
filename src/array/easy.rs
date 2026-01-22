@@ -61,3 +61,5 @@ pub mod task_3074;
 pub mod task_1351;
 mod task_66;
 mod task_961;
+mod task_1266;
+mod task_3507;

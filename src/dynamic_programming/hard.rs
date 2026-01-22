@@ -4,3 +4,4 @@ pub mod freedom_trail_514;
 mod task_1639;
 mod task_1900;
 mod task_1411;
+mod task_85;

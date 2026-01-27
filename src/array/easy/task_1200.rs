@@ -6,7 +6,9 @@ impl Solution {
 
         let min_diff = arr
             .windows(2)
-            .fold(i32::MAX, |last, window| last.min(window[0] - window[1]).abs());
+            .map(|window| (window[0] - window[1]).abs())
+            .reduce(|l, r| l.min(r))
+            .unwrap();
 
         arr.windows(2)
             .filter(|window| (window[0] - window[1]).abs() == min_diff)

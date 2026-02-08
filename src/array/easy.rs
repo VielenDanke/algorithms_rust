@@ -65,3 +65,6 @@ mod task_1266;
 mod task_3507;
 mod task_1984;
 mod task_1200;
+mod task_744;
+mod task_3010;
+mod task_3673;

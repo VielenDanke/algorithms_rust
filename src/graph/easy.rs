@@ -7,3 +7,4 @@ pub mod find_if_path_exists_in_graph_1971;
 pub mod evaluate_boolean_binary_tree;
 pub mod find_center_of_ster_graph_1791;
 mod task_145;
+mod task_1022;

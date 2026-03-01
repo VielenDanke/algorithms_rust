@@ -8,3 +8,6 @@ mod task_120;
 mod task_2048;
 mod task_1015;
 mod task_1461;
+mod task_1404;
+mod task_1680;
+mod task_1689;

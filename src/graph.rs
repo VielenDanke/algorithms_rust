@@ -1,6 +1,7 @@
 pub mod easy;
 pub mod medium;
 pub mod hard;
+pub mod hackerrank;
 
 use std::rc::Rc;
 use std::cell::RefCell;

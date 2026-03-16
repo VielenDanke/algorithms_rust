@@ -28,3 +28,4 @@ mod task_1161;
 mod task_3650;
 mod task_2976;
 mod task_110;
+mod task_1878;
